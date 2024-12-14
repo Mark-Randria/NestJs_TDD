@@ -1,5 +1,5 @@
-import { IArticle } from 'src/articles/interfaces/article.interface';
-import { IUser } from 'src/users/interfaces/user.interface';
+import { IArticle } from 'src/modules/articles/interfaces/article.interface';
+import { IUser } from 'src/modules/users/interfaces/user.interface';
 
 export interface ICritique {
   id: number;

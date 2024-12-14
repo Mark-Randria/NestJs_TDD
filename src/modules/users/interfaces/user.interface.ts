@@ -4,5 +4,5 @@ export interface IUser {
   lastname: string;
   email: string;
   password: string;
-  isAdmin: string;
+  isAdmin: boolean;
 }
