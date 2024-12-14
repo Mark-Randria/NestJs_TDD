@@ -3,6 +3,7 @@ import { Repository } from 'typeorm';
 import { UserEntity } from './user.entity';
 import { IUser } from './interfaces/user.interface';
 import { InjectRepository } from '@nestjs/typeorm';
+import { CreateUserDTO } from './dto/create-user.dto';
 
 @Injectable()
 export class UsersService {
@@ -23,6 +24,15 @@ export class UsersService {
   // constructor(@Inject('TYPEORM_DATA_SOURCE') private dataSource: DataSource) {
   //   this.userRepository = this.dataSource.getRepository(UserEntity);
   // }
+
+  async createUser(user: CreateUserDTO): Promise<IUser> {
+    const savedUser = this.userRepository.create(user);
+    return await this.userRepository.save(savedUser);
+  }
+
+  async findAll(): Promise<IUser[]> {
+    return await this.userRepository.find();
+  }
 
   async findUserById(id: number): Promise<IUser> {
     return await this.userRepository.findOneBy({ id });
